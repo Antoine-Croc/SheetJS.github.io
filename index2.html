@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SheetJS Live Grid Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="all" type="text/css">
+    <link rel="stylesheet" href="css/formulario.css" media="all" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/vendor/alertify.js"></script>
+    <script src="//unpkg.com/canvas-datagrid/dist/canvas-datagrid.js"></script>
+</head>
+
+<body>
+    <form name="formulario" id="form_id">
+        <div class="container-fluid bg-secondary bg-gradient">
+            <div class='row'>
+                <div class="col-sm">
+                    <legend class="Title">Calculadora de costos</legend>
+                </div>
+                <div class="col-4">
+                    <img src="ingebau-logo50p.png" alt="Ingebau">
+                </div>
+            </div>
+            <hr>
+            <div class="calc">
+                <div class="Potency_fill form-group">
+                    <legend> Potencia actual: </legend>
+                    <fieldset id="potency_current" class="row">
+                        <input class="form-control col mx-2" disabled="disabled" autocomplete="off" type="number" id="Value_1A" name="Value 1" type="number" maxlength="8" value="" />
+                        <input class="form-control col mx-2" disabled="disabled" autocomplete="off" type="number" id="Value_2A" name="Value 2" type="number" maxlength="8" value="" />
+                        <input class="form-control col mx-2" disabled="disabled" autocomplete="off" type="number" id="Value_3A" name="Value 3" type="number" maxlength="8" value="" />
+                        <input class="form-control col mx-2" disabled="disabled" autocomplete="off" type="number" id="Value_4A" name="Value 4" type="number" maxlength="8" value="" />
+                        <input class="form-control col mx-2" disabled="disabled" autocomplete="off" type="number" id="Value_5A" name="Value 5" type="number" maxlength="8" value="" />
+                        <input class="form-control col mx-2" disabled="disabled" autocomplete="off" type="number" id="Value_6A" name="Value 6" type="number" maxlength="8" value="" />
+                    </fieldset>
+                </div>
+                <hr>
+                <div class="Potency_fill form-group">
+                    <legend> Potencia deseada: </legend>
+                    <fieldset id="potency_input" class="row">
+                        <input class="form-control col mx-2" autocomplete="off" type="number" step="0.01" min="0" id="Value_1" name="Value 1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="8"
+                        />
+                        <input class="form-control col mx-2" autocomplete="off" type="number" step="0.01" min="0" id="Value_2" name="Value 2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="8"
+                        />
+                        <input class="form-control col mx-2" autocomplete="off" type="number" step="0.01" min="0" id="Value_3" name="Value 3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="8"
+                        />
+                        <input class="form-control col mx-2" autocomplete="off" type="number" step="0.01" min="0" id="Value_4" name="Value 4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="8"
+                        />
+                        <input class="form-control col mx-2" autocomplete="off" type="number" step="0.01" min="0" id="Value_5" name="Value 5" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="8"
+                        />
+                        <input class="form-control col mx-2" autocomplete="off" type="number" step="0.01" min="0" id="Value_6" name="Value 6" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="8"
+                        />
+                    </fieldset>
+
+                </div>
+            </div>
+            <div>
+                <div class="form-group row justify-content-center submit" id="form-send">
+                    <button class="btn btn-danger w-25 col-2 mx-3 my-2" type="button" id="submit">Calcular</button>
+                </div>
+            </div>
+            <div>
+                <div class="form-group row justify-content-center excel">
+                    <button class="btn col-2 btn-danger w-25 mx-3 my-1" type="button" id="download-btn">Descargar excel</button>
+                    <button class="btn col-2 btn-danger w-25 mx-3 my-1" type="button" id="preview-btn">Preview</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <div id="body">
+        <div id="left">
+            <div id="drop"></div>
+            <input type="file" id="file" value="" />
+            <h3> Choose a worksheet:</h3>
+            <div id="buttons"></div>
+        </div>
+        <div id="right">
+            <div id="grid"></div>
+            <div id="footnote">
+            </div>
+        </div>
+
+        <script src="assets/js/shim.js"></script>
+        <script src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+        <script src="assets/js/dropsheet.js"></script>
+        <script src="assets/js/main.js"></script>
+
+        <script src="assets/vendor/spin.js"></script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-36810333-1']);
+            _gaq.push(['_setDomainName', 'sheetjs.com']);
+            _gaq.push(['_setAllowLinker', true]);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+</body>
+
+</html>
